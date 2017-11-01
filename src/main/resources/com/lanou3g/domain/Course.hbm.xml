@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lanou3g.domain">
+    <class name="Course" table="T_COURSE">
+        <id name="id" column="COURSE_ID">
+            <generator class="native"/>
+        </id>
+        <property name="cname"/>
+
+        <set name="students" table="STUDENT_COURSE" cascade="save-update">
+            <key column="COURSE_ID"></key>
+            <many-to-many class="Student" column="STUDENT_ID"/>
+        </set>
+
+
+
+
+    </class>
+</hibernate-mapping>

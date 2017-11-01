@@ -1,0 +1,40 @@
+<ehcache>
+    <!--默认配置文件路径
+    /Users/dllo/.m2/repository/net/sf/ehcache/
+    ehcache/2.10.3/ehcache-2.10.3.jar!/ehcache-failsafe.xml
+    -->
+    <!--配置缓存的目录-->
+    <diskStore path="user.dir"/>
+
+    <!--默认的缓存策略
+        maxElementsInMemory:在内存中缓存的最大条数
+        maxElementsOnDisk:在硬盘中缓存的最大条数
+        eternal:取值是true和false,代表数据是否永远缓存
+        timeToIdleSeconds:数据的闲置时间
+        timeToLiveSeconds:数据的存活时间
+        如果时间到了会从缓存中将该数据移除,腾出空闲的空间出来
+    -->
+
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            maxElementsOnDisk="10000000"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+
+
+    <cache
+            name ="com.lanou3g.domain.Student"
+            maxElementsInMemory="10000"
+            eternal="true"
+            timeToIdleSeconds="0"
+            timeToLiveSeconds="0"
+            maxElementsOnDisk="10000000"
+
+    />
+
+</ehcache>

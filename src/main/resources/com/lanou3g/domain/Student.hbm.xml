@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lanou3g.domain">
+    <class name="Student" table="T_STUDENT" >
+        <id name="id" column="STUDENT_ID">
+            <generator class="native"/>
+        </id>
+        <property name="sname"/>
+
+        <!--
+            table:中间表的表名
+            key:column:中间表的其中一个列名,用来指向当前表(T_STUDENT)的主键
+        -->
+        <set name="courses" table="STUDENT_COURSE" cascade="save-update">
+            <key column="STUDENT_ID"></key>
+            <!--
+                class:第二张表对应的实体类
+                column:中间表的第二列,用来指向第二张表的主键
+            -->
+            <many-to-many class="Course" column="COURSE_ID"/>
+        </set>
+
+
+
+
+
+    </class>
+</hibernate-mapping>
